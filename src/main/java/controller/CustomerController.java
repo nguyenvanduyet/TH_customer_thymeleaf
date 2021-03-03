@@ -59,6 +59,8 @@ public class CustomerController {
     }
     @PostMapping("/create")
     public ModelAndView createStudent( @ModelAttribute Customer customer){
+        int id =(int)(Math.random()*1000) ;
+        customer.setId(id);
         customerService.create(customer);
         ModelAndView modelAndView = new ModelAndView("redirect:/customer");
         return modelAndView;

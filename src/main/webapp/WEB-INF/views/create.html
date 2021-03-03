@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:replace="/layout :: head">
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
@@ -13,5 +13,6 @@
 
 </form>
 <body>
+<footer th:replace="/layout :: footer"></footer>
 </body>
 </html>

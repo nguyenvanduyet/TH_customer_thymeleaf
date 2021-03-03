@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:replace="/layout :: head">
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
@@ -12,5 +12,6 @@
     <input th:field="*{email}">
     <button type="submit">Edit</button>
 </form>
+<footer th:replace="/layout :: footer"></footer>
 </body>
 </html>

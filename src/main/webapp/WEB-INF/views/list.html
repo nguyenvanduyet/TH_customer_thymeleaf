@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<head th:replace="/layout::head">
 </head>
 <body>
 <h2><a href="/customer/create">Create</a></h2>
@@ -11,7 +9,7 @@
     <input type="submit" value="search">
 </form>
 <h2> Danh Sách Khách Hàng</h2>
-<table border="1">
+<table id="customers" border="1">
     <tr>
         <td>Name</td>
         <td>Address</td>
@@ -30,5 +28,6 @@
     </th:block>
 
 </table>
+<footer th:replace="/layout :: footer"></footer>
 </body>
 </html>
