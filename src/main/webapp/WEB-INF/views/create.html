@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<h2>Create Customer</h2>
+<form method="post" th:object="${c}">
+    <input th:field="*{name}" placeholder="nhập tên">
+    <input th:field="*{address}" placeholder="nhập địa chỉ">
+    <input th:field="*{email}" placeholder="nhập email">
+    <button type="submit">Create</button>
+
+</form>
+<body>
+</body>
+</html>
