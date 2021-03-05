@@ -1,10 +1,28 @@
 package model;
 
+//import com.sun.istack.internal.NotNull;
+
+import javax.persistence.*;
+
+@Entity
+@Table
 public class Customer {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+    @Column(nullable = false)
     private String name;
     private String address;
     private String email;
+    private String province;
+
+    public String getProvince() {
+        return province;
+    }
+
+    public void setProvince(String province) {
+        this.province = province;
+    }
 
     public Customer() {
     }
