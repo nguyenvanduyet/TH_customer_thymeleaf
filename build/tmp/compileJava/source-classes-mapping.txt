@@ -1,12 +1,12 @@
-controller/CustomerController.java
- controller.CustomerController
-model/Customer.java
- model.Customer
 service/ICustomerService.java
  service.ICustomerService
+model/Customer.java
+ model.Customer
+config/AppInit.java
+ config.AppInit
+controller/CustomerController.java
+ controller.CustomerController
 config/AppConfiguration.java
  config.AppConfiguration
 service/CustomerServiceORM.java
  service.CustomerServiceORM
-config/AppInit.java
- config.AppInit

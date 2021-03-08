@@ -1,16 +1,25 @@
 package service;
 
-import com.mysql.cj.xdevapi.SessionFactory;
 import model.Customer;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import javax.transaction.Transactional;
 import java.util.List;
 
+@Transactional
 public class CustomerServiceORM implements ICustomerService {
-    @Autowired
+    @PersistenceContext
     private EntityManager entityManager;
+
+//
+//    @Autowired
+//    private SessionFactory sessionFactory;
 
     @Override
     public List<Customer> findAll() {
@@ -26,21 +35,24 @@ public class CustomerServiceORM implements ICustomerService {
 
     @Override
     public Customer findId(int id) {
-        return null;
-    }
-
-    @Override
-    public void delete(int id) {
+        return entityManager.find(Customer.class, id);
 
     }
 
     @Override
-    public void create(Customer customer) {
-
+    public void delete(Customer customer) {
+//        entityManager.remove(entityManager.contains(customer) ? customer : entityManager.merge(customer));
+        entityManager.remove(findId(customer.getId()));
     }
 
     @Override
-    public void edit(int id, Customer customer) {
+    public void createAndEdit(Customer customer) {
+        if (customer.getId() != 0) {
+            entityManager.merge(customer);
+        } else {
+            entityManager.persist(customer);
 
+        }
     }
+
 }

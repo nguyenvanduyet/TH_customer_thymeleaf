@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import service.ICustomerService;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.List;
 import java.util.Map;
 
@@ -41,13 +43,14 @@ public class CustomerController {
     @PostMapping("/edit/{id}")
     public ModelAndView editCustomer(@PathVariable int id,@ModelAttribute Customer customer){
         customer.setId(id);
-        customerService.edit(id,customer);
+        customerService.createAndEdit(customer);
         return new ModelAndView("redirect:/customer");
     }
 
-    @GetMapping("/delete/{id}")
+    @GetMapping("delete/{id}")
     public ModelAndView deleteCustomer(@PathVariable int id){
-        customerService.delete(id);
+        Customer customer=customerService.findId(id);
+        customerService.delete(customer);
         return new ModelAndView("redirect:/customer");
     }
     @GetMapping("/create")
@@ -60,7 +63,7 @@ public class CustomerController {
     public ModelAndView createStudent( @ModelAttribute Customer customer){
         int id =(int)(Math.random()*1000) ;
         customer.setId(id);
-        customerService.create(customer);
+        customerService.createAndEdit(customer);
         ModelAndView modelAndView = new ModelAndView("redirect:/customer");
         return modelAndView;
     }
